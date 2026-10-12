@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社OXP | 薬局経営コンサルティング</title>
+<meta name="description" content="株式会社OXPは調剤薬局専門のコンサルティング会社です。業務改善・運営改善・HP制作・在宅導入・各種加算算定支援まで一気通貫でサポートします。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1117;
+    --paper: #f5f0e8;
+    --orange: #e8621a;
+    --orange-light: #f08040;
+    --orange-pale: #fff4ed;
+    --muted: #8c8070;
+    --border: #d5cfc4;
+    --white: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Serif JP', serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(245,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--ink); }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta { background: var(--orange); color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2px; font-size: 0.78rem !important; }
+  .nav-cta:hover { background: var(--orange-light); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6rem 4rem 6rem 6rem; }
+  .hero-eyebrow { font-family: 'Syne', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; color: var(--orange); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+  .hero-title { font-weight: 700; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.4; margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+  .hero-title em { font-style: normal; color: var(--orange); border-bottom: 3px solid var(--orange); }
+  .hero-sub { font-size: 0.95rem; line-height: 2; color: var(--muted); max-width: 440px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+  .btn-primary, .btn-secondary { padding: 0.9rem 2rem; font-family: 'Noto Serif JP', serif; font-size: 0.85rem; border-radius: 2px; letter-spacing: 0.05em; text-decoration: none; display: inline-block; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+  .btn-secondary { color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--orange); transform: translateY(-2px); }
+
+  .hero-right { background: linear-gradient(135deg, #e8621a 0%, #f5944a 50%, #f0b060 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .hero-pattern { position: absolute; inset: 0; opacity: 0.12; background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.6) 39px, rgba(255,255,255,0.6) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.6) 39px, rgba(255,255,255,0.6) 40px); }
+  .hero-visual { position: relative; z-index: 1; padding: 3rem; }
+  .hero-visual-num { font-family: 'Syne', sans-serif; font-size: 7rem; font-weight: 800; color: rgba(255,255,255,0.15); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
+  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; position: relative; z-index: 2; }
+  .stat-item { padding: 1.5rem 2rem; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); border-radius: 4px; opacity: 0; animation: fadeLeft 0.8s forwards; }
+  .stat-item:nth-child(1) { animation-delay: 0.5s; }
+  .stat-item:nth-child(2) { animation-delay: 0.7s; }
+  .stat-item:nth-child(3) { animation-delay: 0.9s; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--white); }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.9); margin-top: 0.2rem; letter-spacing: 0.05em; }
+
+  /* SECTIONS */
+  section { padding: 7rem 6rem; }
+  .section-label { font-family: 'Syne', sans-serif; font-size: 0.68rem; letter-spacing: 0.3em; color: var(--orange); text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2.4rem); line-height: 1.5; margin-bottom: 1rem; }
+  .section-desc { font-size: 0.9rem; line-height: 2; color: var(--muted); max-width: 560px; }
+
+  /* ABOUT */
+  .about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-text .lead { font-size: 1.1rem; line-height: 2; margin-bottom: 1.5rem; }
+  .about-text p { font-size: 0.88rem; line-height: 2.2; color: var(--muted); }
+  .about-visual { background: var(--paper); border-radius: 4px; padding: 3rem; border: 1px solid var(--border); }
+  .about-feature { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 2rem; }
+  .about-feature:last-child { margin-bottom: 0; }
+  .feat-icon { width: 36px; height: 36px; background: var(--orange); border-radius: 2px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; }
+  .feat-text h4 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .feat-text p { font-size: 0.78rem; color: var(--muted); line-height: 1.8; }
+
+  /* SERVICES */
+  .services { background: var(--ink); }
+  .services .section-label { color: var(--orange-light); }
+  .services .section-title { color: var(--white); }
+  .services .section-desc { color: rgba(255,255,255,0.5); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 4rem; background: rgba(255,255,255,0.08); }
+  .service-card { background: var(--ink); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--orange); transition: height 0.4s; }
+  .service-card:hover { background: rgba(255,255,255,0.03); }
+  .service-card:hover::before { height: 100%; }
+  .service-num { font-family: 'Syne', sans-serif; font-size: 0.68rem; color: var(--orange-light); letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+  .service-card h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 1rem; line-height: 1.6; }
+  .service-card p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 2; }
+  .service-cta { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; text-decoration: none; }
+
+  /* RESULTS */
+  .results { background: var(--orange-pale); }
+  .result-card { margin-top: 3rem; background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 3rem; display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; max-width: 860px; }
+  .result-tag { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; grid-column: 1 / -1; }
+  .result-box { text-align: center; }
+  .result-box .label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .result-box .value { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.6rem; }
+  .result-box .value small { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; margin-left: 0.2rem; }
+  .result-box.after .value { color: var(--orange); }
+  .result-arrow { font-family: 'Syne', sans-serif; font-size: 2rem; color: var(--orange); }
+  .result-note { grid-column: 1 / -1; font-size: 0.85rem; line-height: 2; color: var(--muted); border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+  /* FLOW */
+  .flow { background: var(--paper); }
+  .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 4rem; }
+  .flow-step { padding: 2rem 1.5rem; background: var(--white); border: 1px solid var(--border); position: relative; }
+  .flow-step-num { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+  .flow-step h4 { font-size: 0.95rem; margin-bottom: 0.7rem; }
+  .flow-step p { font-size: 0.78rem; color: var(--muted); line-height: 1.9; }
+  .flow-step-arrow { position: absolute; top: 50%; right: -14px; transform: translateY(-50%); width: 28px; height: 28px; background: var(--orange); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; z-index: 1; border-radius: 50%; }
+  .flow-step:last-child .flow-step-arrow { display: none; }
+
+  /* CONTACT */
+  .contact { background: var(--orange); text-align: center; padding: 7rem 4rem; }
+  .contact .section-label { color: rgba(255,255,255,0.75); }
+  .contact .section-title { color: var(--white); }
+  .contact .section-desc { color: rgba(255,255,255,0.9); margin: 0 auto 2.5rem; }
+  .contact-mail { display: inline-block; background: var(--white); color: var(--orange); padding: 1.1rem 2.8rem; font-weight: 700; font-size: 0.95rem; border-radius: 2px; text-decoration: none; letter-spacing: 0.05em; transition: transform 0.2s, opacity 0.2s; }
+  .contact-mail:hover { transform: translateY(-2px); opacity: 0.92; }
+  .contact-address { margin-top: 1.2rem; color: rgba(255,255,255,0.9); font-size: 0.85rem; letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,0.4); padding: 3rem 6rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; }
+  .footer-logo span { color: var(--orange-light); }
+  footer p { font-size: 0.75rem; letter-spacing: 0.05em; }
+  footer a { color: rgba(255,255,255,0.6); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links li:not(:last-child) { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 1.25rem 3rem; }
+    .hero-right { padding: 3rem 1.25rem; }
+    .hero-visual { padding: 0; width: 100%; }
+    .hero-visual-num { font-size: 4.5rem; }
+    section { padding: 4.5rem 1.25rem; }
+    .about { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-visual { padding: 1.75rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .result-card { grid-template-columns: 1fr; padding: 2rem 1.5rem; text-align: center; }
+    .result-arrow { transform: rotate(90deg); }
+    .flow-steps { grid-template-columns: 1fr; gap: 1rem; }
+    .flow-step-arrow { display: none; }
+    .contact { padding: 4.5rem 1.25rem; }
+    .contact-mail { padding: 1rem 1.5rem; font-size: 0.85rem; }
+    footer { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">OX<span>P</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">私たちについて</a></li>
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#results">実績</a></li>
+    <li><a href="#flow">支援の流れ</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Pharmacy Management Consulting</p>
+    <h1 class="hero-title">薬局の<em>経営力</em>を、<br>次のステージへ。</h1>
+    <p class="hero-sub">株式会社OXPは、調剤薬局専門のコンサルティング会社です。現場を知り抜いたプロフェッショナルが、運営改善から加算算定支援まで一気通貫でサポートします。</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">無料相談を申し込む</a>
+      <a class="btn-secondary" href="#services">サービスを見る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-visual">
+      <div class="hero-visual-num">OXP</div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">支援実績薬局数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">現場経験を持つコンサルタント</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">在宅・加算</div>
+          <div class="stat-label">算定支援に特化した専門知識</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="about-text">
+    <p class="section-label">About OXP</p>
+    <h2 class="section-title">薬局経営の<br>現場から生まれた<br>コンサルティング</h2>
+    <p class="lead">「現場を知らないコンサルに、何がわかる？」そんな悩みに応えるために、OXPは生まれました。</p>
+    <p>私たちは薬剤師・薬局経営者としての実務経験を持つメンバーが集まり、理論だけでなく現場感覚に基づく実践的な支援を提供しています。調剤報酬改定のたびに変わる制度をいち早くキャッチし、貴薬局の収益最大化をともに実現します。</p>
+  </div>
+  <div class="about-visual">
+    <div class="about-feature">
+      <div class="feat-icon">✦</div>
+      <div class="feat-text"><h4>薬剤師・経営者目線での支援</h4><p>制度・現場・経営の三つの視点から、実効性ある改善策を提案します。</p></div>
+    </div>
+    <div class="about-feature">
+      <div class="feat-icon">✦</div>
+      <div class="feat-text"><h4>報酬算定の最大化</h4><p>見落としがちな加算の整備・届出を支援し、適正な収益確保を実現します。</p></div>
+    </div>
+    <div class="about-feature">
+      <div class="feat-icon">✦</div>
+      <div class="feat-text"><h4>継続的なアフターフォロー</h4><p>単発のコンサルではなく、改善後も継続してサポートする体制を構築しています。</p></div>
+    </div>
+    <div class="about-feature">
+      <div class="feat-icon">✦</div>
+      <div class="feat-text"><h4>地域医療への貢献</h4><p>在宅医療・多職種連携を通じ、地域になくてはならない薬局づくりを支援します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <p class="section-label">Services</p>
+  <h2 class="section-title">サービス一覧</h2>
+  <p class="section-desc">薬局が抱える課題に応じた、5つの専門サービスをご提供します。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <h3>薬局業務改善<br>コンサルティング</h3>
+      <p>調剤フロー・在庫管理・スタッフシフトなど、業務の無駄を洗い出し、スループット向上と残業削減を同時に実現します。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <h3>薬局経営・<br>運営改善支援</h3>
+      <p>収支分析・KPI設定・スタッフマネジメント体制の構築など、経営の"見える化"から改善実行まで伴走します。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <h3>ホームページ<br>制作・集患支援</h3>
+      <p>地域患者への認知拡大を目的としたHP制作。Google Map最適化・SEO対策・患者導線設計まで一貫してサポートします。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">04</p>
+      <h3>在宅医療<br>導入支援</h3>
+      <p>在宅患者ゼロからのスタートでも安心。ケアマネ・医療機関へのアプローチから、業務フロー整備まで丁寧にサポートします。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">05</p>
+      <h3>各種加算<br>算定支援</h3>
+      <p>服薬管理指導料・連携強化加算・在宅薬学管理料など、届出・運用・実績管理まで包括的に支援します。</p>
+    </div>
+    <a class="service-card service-cta" href="#contact">
+      <p style="color:rgba(255,255,255,0.4);font-size:0.8rem;letter-spacing:0.1em;text-align:center;">まずは気軽にご相談ください</p>
+      <p style="color:var(--orange-light);font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.1em;">無料相談 →</p>
+    </a>
+  </div>
+</section>
+
+<section class="results" id="results">
+  <p class="section-label">Results</p>
+  <h2 class="section-title">支援実績</h2>
+  <p class="section-desc">加算の整備と運用改善により、調剤技術料を大きく伸ばした事例です。</p>
+  <div class="result-card">
+    <p class="result-tag">CASE 01｜静岡県内の調剤薬局</p>
+    <div class="result-box">
+      <p class="label">支援前</p>
+      <p class="value">200<small>万円</small></p>
+    </div>
+    <div class="result-arrow">→</div>
+    <div class="result-box after">
+      <p class="label">支援後</p>
+      <p class="value">300<small>万円</small></p>
+    </div>
+    <p class="result-note">調剤技術料が200万円から300万円へ。算定漏れの洗い出しと届出の整備、現場オペレーションの見直しを組み合わせて改善しました。</p>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <p class="section-label">Flow</p>
+  <h2 class="section-title">支援の流れ</h2>
+  <p class="section-desc">ご相談から改善実施まで、シンプルなステップで進めます。</p>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-step-num">01</div>
+      <h4>無料ヒアリング</h4>
+      <p>現状の課題・目標・薬局規模をオンラインまたは訪問にてお聞きします。秘密厳守でご対応します。</p>
+      <div class="flow-step-arrow">→</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">02</div>
+      <h4>現状分析・診断</h4>
+      <p>処方箋枚数・算定状況・業務フローを分析し、改善ポイントを可視化したレポートをご提出します。</p>
+      <div class="flow-step-arrow">→</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">03</div>
+      <h4>改善プランの策定</h4>
+      <p>優先度・スケジュール・期待効果を明示した実行計画を共同で策定。無理のない段階的な改善を設計します。</p>
+      <div class="flow-step-arrow">→</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-num">04</div>
+      <h4>実行・継続支援</h4>
+      <p>計画の実施をハンズオンでサポート。月次レビューで進捗を確認しながら、継続的な改善を推進します。</p>
+      <div class="flow-step-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">まずは無料でご相談ください</h2>
+  <p class="section-desc">「何から始めればいいかわからない」という段階からでも、お気軽にどうぞ。通常2営業日以内にご返信します。</p>
+  <a class="contact-mail" href="mailto:oxpkuromaru@gmail.com?subject=%E3%80%90%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">メールで相談する</a>
+  <p class="contact-address">oxpkuromaru@gmail.com</p>
+</section>
+
+<footer>
+  <div class="footer-logo">OX<span>P</span> 株式会社</div>
+  <p>株式会社OXP｜<a href="mailto:oxpkuromaru@gmail.com">oxpkuromaru@gmail.com</a></p>
+  <p>© 2026 OXP Inc. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
